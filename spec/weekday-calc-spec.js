@@ -17,4 +17,9 @@ describe('Weekday', function(){
     expect(newDay.daysPastInYear()).toEqual(141);
   });
 
+  it('should check how many days have gone by since 1, 1, 0', function(){
+    let newDay = new Weekday (500, 5, 20);
+    expect(newDay.daysGoneWayBy()).toEqual(182761);
+  });
+
 });

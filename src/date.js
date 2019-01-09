@@ -52,6 +52,15 @@ class Weekday {
     return daysInYear;
   }
 
+  daysGoneWayBy(){
+
+    let addLeapYears = Math.floor((this.year/4) - (this.year/100) + (this.year/400));
+
+    let totalDaysPast = (this.year * 365) + addLeapYears + this.daysPastInYear();
+
+    return totalDaysPast;
+  }
+
 
 
   //
