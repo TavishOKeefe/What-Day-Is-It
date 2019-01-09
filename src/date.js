@@ -7,7 +7,9 @@ class Weekday {
 
   leapYear() {
 
-    if ((this.year % 100 === 0) && (this.year % 400 === 0)) {
+    if (this.year === 0){
+      return false;
+    } else if ((this.year % 100 === 0) && (this.year % 400 === 0)) {
       return true;
     } else if (this.year % 100 === 0) {
       return false;
@@ -18,7 +20,7 @@ class Weekday {
 
   daysPastInYear() {
 
-    let daysInYear = 0;
+    let daysInYear = -1;
 
     if (this.leapYear() === true && this.month !== 1 && this.month !== 2){
       daysInYear += 1;
@@ -54,46 +56,33 @@ class Weekday {
 
   daysGoneWayBy(){
 
-    let addLeapYears = Math.floor((this.year/4) - (this.year/100) + (this.year/400));
+    let addLeapYears = Math.floor(this.year/4) - Math.floor(this.year/100) + Math.floor(this.year/400);
 
     let totalDaysPast = (this.year * 365) + addLeapYears + this.daysPastInYear();
 
     return totalDaysPast;
   }
 
+  dayCalculation() {
 
+    let number = this.daysGoneWayBy();
 
-  //
-  //
-  // dayCalculation() {
-  //   const anchorDate = new Date(1900, 1, 1);
-  //   let userDate = new Date(this.year, this.month, this.date);
-  //   let result = [];
-  //
-  //   // if (anchorDate % userDate.date ===  0) {
-  //   //   result.push("monday");
-  //   // } else if (anchorDate % userDate.date ===  1) {
-  //   //   result.push("tuesday");
-  //   // } else if (anchorDate % userDate.date ===  2) {
-  //   //   result.push("wednesday");
-  //   // } else if (anchorDate % userDate.date ===  3) {
-  //   //   result.push("thursday");
-  //   // } else if (anchorDate % userDate.date ===  4) {
-  //   //   result.push("friday");
-  //   // } else if (anchorDate % userDate.date ===  5) {
-  //   //   result.push("saturday");
-  //   // } else (anchorDate % userDate.date ===  6) {
-  //   //   result.push("sunday");
-  //  }
-  //   return result;
-  // }
-  //
-
-
-
-
-
-
+    if (number % 7 ===  1) {
+      return "Monday";
+    } else if (number % 7 ===  2) {
+      return "Tuesday";
+    } else if (number % 7 ===  3) {
+      return "Wednesday";
+    } else if (number % 7 ===  4) {
+      return "Thursday";
+    } else if (number % 7 ===  5) {
+      return "Friday";
+    } else if (number % 7 ===  6) {
+      return "Saturday";
+    } else if (number % 7 ===  0) {
+      return "Sunday";
+    }
+  }
 
 }
 

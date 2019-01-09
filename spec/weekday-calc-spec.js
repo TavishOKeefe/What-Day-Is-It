@@ -12,14 +12,24 @@ describe('Weekday', function(){
     expect(newDay.leapYear()).toEqual(true);
   });
 
-  it('should calculate how many days are in the year', function(){
+  it('should calculate how many days have past in the year', function(){
     let newDay = new Weekday (2000, 5, 20);
-    expect(newDay.daysPastInYear()).toEqual(141);
+    expect(newDay.daysPastInYear()).toEqual(140);
   });
 
   it('should check how many days have gone by since 1, 1, 0', function(){
-    let newDay = new Weekday (500, 5, 20);
-    expect(newDay.daysGoneWayBy()).toEqual(182761);
+    let newDay = new Weekday (0, 5, 20);
+    expect(newDay.daysGoneWayBy()).toEqual(139);
+  });
+
+  it('should check if input is monday', function(){
+    let newDay = new Weekday (1999, 1, 4);
+    expect(newDay.dayCalculation()).toEqual("Monday");
+  });
+
+  it('should check if input is thursday', function(){
+    let newDay = new Weekday (2019, 1, 3);
+    expect(newDay.dayCalculation()).toEqual("Thursday");
   });
 
 });
