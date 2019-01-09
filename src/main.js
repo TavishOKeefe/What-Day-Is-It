@@ -13,8 +13,15 @@ $(document).ready(function(){
     let inputDate = parseInt($('#day').val());
 
     let dayOfTheWeek = new Weekday(inputYear, inputMonth, inputDate);
-    console.log(dayOfTheWeek);
 
-    $('#result').text(dayOfTheWeek.dayCalculation());
+    if (inputMonth < 1 || inputMonth > 12){
+      $('#result').html("Your month is invalid");
+    } else if (inputDate > 31 || inputDate < 1){
+      $('#result').html("Your day is invalid");
+    } else {
+      $('#result').text(dayOfTheWeek.dayCalculation());
+    }
+
+
   })
 })

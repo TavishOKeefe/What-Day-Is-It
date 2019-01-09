@@ -5,8 +5,24 @@ class Weekday {
     this.date = date
   }
 
-  leapYear() {
+  invalidDate(){
 
+    let leapYear = this.leapYear();
+
+    if (this.date > 31 || this.date < 1) {
+        return "Invalid Date!";
+    } else if (this.month < 1 || this.month > 12) {
+        return "Invalid Month!";
+    } else if ((this.month === 4 || this.month === 6 || this.month === 9 || this.month === 11) && (this.date > 30)) {
+        return "Invalid Date!";
+    } else if ((leapYear === true) && (this.month === 2) && (this.date > 29)) {
+        return "Invalid Date!";
+    } else if ((leapYear === false) && (this.month === 2) && (this.date > 28)) {
+        return "Invalid Date!";
+    }
+  }
+
+  leapYear() {
     if (this.year === 0){
       return false;
     } else if ((this.year % 100 === 0) && (this.year % 400 === 0)) {
@@ -19,7 +35,6 @@ class Weekday {
   }
 
   daysPastInYear() {
-
     let daysInYear = -1;
 
     if (this.leapYear() === true && this.month !== 1 && this.month !== 2){
@@ -50,12 +65,10 @@ class Weekday {
     } else if (this.month === 12){
       daysInYear += (this.date + 335);
     }
-
     return daysInYear;
   }
 
   daysGoneWayBy(){
-
     let addLeapYears = Math.floor(this.year/4) - Math.floor(this.year/100) + Math.floor(this.year/400);
 
     let totalDaysPast = (this.year * 365) + addLeapYears + this.daysPastInYear();
@@ -64,7 +77,6 @@ class Weekday {
   }
 
   dayCalculation() {
-
     let number = this.daysGoneWayBy();
 
     if (number % 7 ===  1) {
@@ -83,7 +95,6 @@ class Weekday {
       return "Sunday";
     }
   }
-
 }
 
 export { Weekday };
