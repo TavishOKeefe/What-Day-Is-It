@@ -5,6 +5,8 @@ class Weekday {
     this.date = date
   }
 
+
+//function not yet called, or working.
   invalidDate(){
 
     let leapYear = this.leapYear();
@@ -21,6 +23,7 @@ class Weekday {
         return "Invalid Date!";
     }
   }
+//End of function not yet working.
 
   leapYear() {
     if (this.year === 0){
