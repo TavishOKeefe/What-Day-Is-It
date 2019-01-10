@@ -9,16 +9,25 @@ class Weekday {
     this.milliseconds = 0
   }
 
-
-//function not yet called, or working.
   invalidDate(){
 
     if ((this.month === 4 || this.month === 6 || this.month === 9 || this.month === 11) && (this.date > 30)) {
-        return "Invalid Date!";
+        return true;
+      } else {
+        return false;
       }
-
   }
 
+  invalidDateInFebruary(){
+
+    if (this.leapYear() === true && this.month === 2 && this.date > 29) {
+      return true;
+    } else if (this.leapYear() !== true && this.month === 2 && this.date > 28) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   leapYear() {
     if (this.year === 0){
@@ -31,17 +40,6 @@ class Weekday {
       return true;
     }
   }
-
-  // invalidDateInFebruary(){
-  //
-  //   if (this.leapYear() === true && this.month === 2 && this.date > 29) {
-  //     console.log(this.leapYear());
-  //     return "Invalid Date!";
-  //   } else if (this.leapYear() === true && this.month === 2 && this.date > 28) {
-  //     return "Invalid Date!";
-  //   }
-  //
-  // }
 
   daysPastInYear() {
     let daysInYear = -1;
@@ -128,11 +126,8 @@ class Weekday {
       let resultInDays = Math.floor(resultInHours/ 24);
 
       return resultInDays;
-
   }
 
 }
-
-
 
 export { Weekday };

@@ -14,7 +14,11 @@ $(document).ready(function(){
 
     let dayOfTheWeek = new Weekday(inputYear, inputMonth, inputDate);
 
-    if (inputMonth < 1 || inputMonth > 12){
+    if (dayOfTheWeek.invalidDate() === true){
+      $('#result').html("Your day is invalid");
+    } else if (dayOfTheWeek.invalidDateInFebruary() === true){
+      $('#result').html("Your day is invalid");
+    } else if (inputMonth < 1 || inputMonth > 12){
       $('#result').html("Your month is invalid");
     } else if (inputDate > 31 || inputDate < 1){
       $('#result').html("Your day is invalid");
