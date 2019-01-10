@@ -20,7 +20,9 @@ $(document).ready(function(){
       $('#result').html("Your day is invalid");
     } else {
       $('#result').text(dayOfTheWeek.dayCalculation());
+      $('#days').text(dayOfTheWeek.timePassed());
     }
+
 
 
   })

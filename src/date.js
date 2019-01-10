@@ -2,28 +2,23 @@ class Weekday {
   constructor(year, month, date){
     this.year = year,
     this.month = month,
-    this.date = date
+    this.date = date,
+    this.hours = 0,
+    this.minutes = 0,
+    this.seconds = 0,
+    this.milliseconds = 0
   }
 
 
 //function not yet called, or working.
   invalidDate(){
 
-    let leapYear = this.leapYear();
+    if ((this.month === 4 || this.month === 6 || this.month === 9 || this.month === 11) && (this.date > 30)) {
+        return "Invalid Date!";
+      }
 
-    if (this.date > 31 || this.date < 1) {
-        return "Invalid Date!";
-    } else if (this.month < 1 || this.month > 12) {
-        return "Invalid Month!";
-    } else if ((this.month === 4 || this.month === 6 || this.month === 9 || this.month === 11) && (this.date > 30)) {
-        return "Invalid Date!";
-    } else if ((leapYear === true) && (this.month === 2) && (this.date > 29)) {
-        return "Invalid Date!";
-    } else if ((leapYear === false) && (this.month === 2) && (this.date > 28)) {
-        return "Invalid Date!";
-    }
   }
-//End of function not yet working.
+
 
   leapYear() {
     if (this.year === 0){
@@ -36,6 +31,17 @@ class Weekday {
       return true;
     }
   }
+
+  // invalidDateInFebruary(){
+  //
+  //   if (this.leapYear() === true && this.month === 2 && this.date > 29) {
+  //     console.log(this.leapYear());
+  //     return "Invalid Date!";
+  //   } else if (this.leapYear() === true && this.month === 2 && this.date > 28) {
+  //     return "Invalid Date!";
+  //   }
+  //
+  // }
 
   daysPastInYear() {
     let daysInYear = -1;
@@ -98,6 +104,35 @@ class Weekday {
       return "Sunday";
     }
   }
+
+  timePassed() {
+
+    let monthForDate = parseInt(this.month) - 1;
+    let millisecondsBetween = 0;
+
+    let todayDate =  new Date();
+    let pastDate = new Date(this.year, monthForDate, this.date, this.hours, this.minutes, this.seconds, this.milliseconds);
+
+    let todayTime = todayDate.getTime();
+    let pastTime = pastDate.getTime();
+
+    if ( pastTime < 0) {
+      millisecondsBetween += ((pastTime * -1) + todayTime);
+    } else if (pastTime > todayTime){
+      millisecondsBetween += (pastTime - todayTime);
+    } else {
+      millisecondsBetween += (todayTime - pastTime);
+    }
+
+      let resultInHours = (millisecondsBetween / 3600000);
+      let resultInDays = Math.floor(resultInHours/ 24);
+
+      return resultInDays;
+
+  }
+
 }
+
+
 
 export { Weekday };

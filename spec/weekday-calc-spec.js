@@ -32,25 +32,40 @@ describe('Weekday', function(){
     expect(newDay.dayCalculation()).toEqual("Thursday");
   });
 
-  it('should check if month is valid', function(){
-    let newDay = new Weekday (2019, 0, 3);
-    expect(newDay.invalidDate()).toEqual("Invalid Month!");
-  });
-
-  it('should check if day is valid', function(){
-    let newDay = new Weekday (2019, 1, 36);
-    expect(newDay.invalidDate()).toEqual("Invalid Date!");
-  });
+  // it('should check if month is valid', function(){
+  //   let newDay = new Weekday (2019, 0, 3);
+  //   expect(newDay.invalidDate()).toEqual("Invalid Month!");
+  // });
+  //
+  // it('should check if day is valid', function(){
+  //   let newDay = new Weekday (2019, 1, 36);
+  //   expect(newDay.invalidDate()).toEqual("Invalid Date!");
+  // });
 
   it('should check if day is valid in april', function(){
     let newDay = new Weekday (2019, 4, 31);
     expect(newDay.invalidDate()).toEqual("Invalid Date!");
   });
 
-  // it('should check if day is valid in  february', function(){
-  //   let newDay = new Weekday (2019, 2, 29);
-  //   expect(newDay.invalidDate()).toEqual("Invalid Date!");
-  // });
+  it('should check how many days are in between current date and past date', function(){
+    let newDay = new Weekday (1946, 4, 31);
+    expect(newDay.timePassed()).toEqual(26552);
+  });
+
+  it('should check how many days are in between current date and future date', function(){
+    let newDay = new Weekday (2087, 4, 31);
+    expect(newDay.timePassed()).toEqual(24947);
+  });
+
+  it('should check how many days are in between current date and past date after 1970', function(){
+    let newDay = new Weekday (1975, 4, 31);
+    expect(newDay.timePassed()).toEqual(15960);
+  });
+
+  it('should check if day is valid in  february', function(){
+    let newDay = new Weekday (2019, 2, 30);
+    expect(newDay.invalidDateInFebruary()).toEqual("Invalid Date!");
+  });
   //
   // it('should check if day is valid in leap year february', function(){
   //   let newDay = new Weekday (2020, 2, 29);
