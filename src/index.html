@@ -5,26 +5,49 @@
     <title>Weekday Calculator</title>
   </head>
   <body>
+    <div class="container">
 
-    <form id="main-form">
-      <div class="form-group">
-        <label for="year">Enter a year:</label>
-        <input id="year" type="number">
+      <div class="jumbotron">
 
-        <label for="month">Enter a month:</label>
-        <input id="month" type="number">
+        <div class="title">
+          <h3>Tavish & Katrina present:</h3>
+          <h1>What
+            <span style='color: orange'>f</span>
+            <span style='color: red'>*</span>
+            <span style='color: yellow'>c</span>
+            <span style='color: purple'>k</span>
+            <span style='color: green'>$</span>
+            <span style='color: red'>n</span>
+             day of the week was that?</h1>
+        </div>
 
-        <label for="day">Enter a day:</label>
-        <input id="day" type="number">
       </div>
+
+      <form id="main-form">
+        <div class="form-group">
+          <label for="year">Enter a year:</label>
+          <input id="year" type="number">
+
+          <label for="month">Enter a month:</label>
+          <input id="month" type="number">
+
+          <label for="day">Enter a day:</label>
+          <input id="day" type="number">
+        </div>
+        <br>
+        <button type="submit" name="button" class="button">Submit</button>
+      </form>
+
       <br>
-      <button type="submit" name="button">Submit</button>
-    </form>
-    <br>
-    <h4>This is what day your input was, or will be.</h4>
-    <div id="result"></div>
-    <br>
-    <h4>This is how many days have passed since your inputed date, or will have to pass, before your inputed date arrives.</h4>
-    <div id="days"></div>
+      <div id="show-result">
+        <h4><span style='color: white'>This is what day your input was, or will be.</span></h4>
+        <div id="result"></div>
+        <br>
+        <h4><span style='color: white'>Days between this and that.</span></h4>
+        <div id="days"></div>
+      </div>
+
+
+  </div>
   </body>
 </html>

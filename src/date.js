@@ -127,7 +127,6 @@ class Weekday {
 
       return resultInDays;
   }
-
 }
 
 export { Weekday };

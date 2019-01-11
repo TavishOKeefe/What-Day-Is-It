@@ -4,9 +4,11 @@ import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+
 $(document).ready(function(){
   $('#main-form').submit(function(event){
     event.preventDefault();
+    $("#show-result").show();
 
     let inputYear = parseInt($('#year').val());
     let inputMonth = parseInt($('#month').val());
@@ -26,8 +28,5 @@ $(document).ready(function(){
       $('#result').text(dayOfTheWeek.dayCalculation());
       $('#days').text(dayOfTheWeek.timePassed());
     }
-
-
-
   })
 })
